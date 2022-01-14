@@ -1,0 +1,197 @@
+/* headlines */
+
+h1,h2,h3,h4,h5,h6 {
+	line-height: 1.2;
+	margin-top: 0;
+}
+
+p + h2,
+p + h3,
+p + h5,
+p + h6 {
+	margin-top: 2.25em;
+}
+
+p + h4 {
+	margin-top: 1em;
+}
+
+
+h1,.look-like-h1 {
+	color: color(secondary,base);
+	font-size: 2rem;
+	margin-bottom: 0.5em;
+	font-family: $font-headline;
+	letter-spacing: 0.05em;
+
+	@media (min-width: $md ){
+		font-size: 2.5rem;
+	}
+}
+
+h2,.look-like-h2 {
+	font-family: $font-headline;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 0.25em;
+	text-align: center;
+	letter-spacing: 3px;
+}
+
+h3,.look-like-h3 {
+	font-family: $font-headline;
+	color: color(secondary,base);
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-bottom: 0.85em;
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+
+h4 {
+	color: #fff;
+	font-size: 0.85rem;
+	margin-bottom: 0.8em;
+	line-height: 1.5;
+}
+
+h4::after {
+	background-color: #fff;
+	content: '';
+	display: inline-block;
+	height: 2px;
+	margin-left: 10px;
+	position: relative;
+	top: -3px;
+	width: 1.5em;
+}
+
+p,
+ul,
+ol,
+table {
+	font-size: 0.7rem;
+	line-height: 1.5;
+	margin: 0 0 1em 0;
+	font-weight: 400;
+}
+
+span {
+	color: color(primary,base);
+}
+
+
+/* sup */
+
+sup {
+	white-space: nowrap; // prevent the sup notes breaking a line
+}
+
+/* small */
+
+small {
+	display: block;
+	font-size: 0.5rem;
+	font-style: italic;
+	margin-bottom: 2.4em;
+}
+
+p small {
+	font-size: 0.9em;
+	margin-bottom: -1.2em;
+}
+
+.form small {
+	text-align: right;
+}
+
+/* links */
+
+a {
+	color: color(secondary,base);
+	display: inline-block;
+	text-decoration: none;
+	font-weight: 400;
+	@include transition( all 0.3s );
+
+	&:hover,
+	&:focus {
+	}
+
+}
+
+a[href^=tel] {
+	cursor: text;
+}
+
+.remove-link-style {
+	color: inherit;
+	border-bottom: 0;
+
+	&:hover,
+	&:focus {
+	}
+}
+
+/* lists */
+
+ul,ol {
+	padding-inline-start: 0px;
+	list-style: none;
+}
+
+li {
+	margin-bottom: 0.3em;
+	position: relative;
+	text-align: center;
+	line-height: 2;
+}
+
+ol {
+	counter-reset: ol-counter;
+}
+
+ol li::before {
+	color: color(primary,base);
+	content: counter(ol-counter, decimal-leading-zero) '';
+	counter-increment: ol-counter;
+	display: inline-block;
+	font-weight: bold;
+	margin-left: -2.8em;
+	margin-right: 0.6em;
+	width: 1.43em;
+}
+
+ul li::before, ul li::after{
+	background-color: #2B2B2B;
+	content: '';
+	display: inline-block;
+	height: 2px;
+	margin-left: 10px;
+    margin-right: 10px;
+	position: relative;
+	top: -3px;
+	width: 0.7em;
+}
+
+.list::before {
+	background-color: color(primary,base);
+	content: '';
+	display: inline-block;
+	height: 2px;
+	margin-left: 0em;
+	margin-right: 0.7em;
+	position: relative;
+	top: -3px;
+	width: 0.5em;
+}
+
+.column-text {
+	column-count: 2;
+	column-gap: 1.5em;
+}
+
+.look-white {
+	color: #fff;
+}

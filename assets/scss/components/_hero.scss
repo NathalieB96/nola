@@ -1,0 +1,83 @@
+.hero {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+
+
+	&__image {
+		width: 100%;
+	}
+}
+
+
+.line {
+	position: absolute;
+	border-left: solid color(primary,base) 0.4rem;
+	height: 6rem;
+	bottom: 0;
+	left: 50%;
+	transform: translateY(45%);
+}
+
+.hero-home {
+	position: relative;
+	display: flex;
+
+	&__left {
+		width: 100%;
+		height: 58vh;
+		background-color: green;
+		background-image: url("../img/hero-home--small.jpg");
+		background-size: cover;
+		position: relative;
+
+		@media (min-width: $sm) {
+			height: 95vh;
+		}
+
+		@media (min-width: $md) {
+			height: 90vh;
+			background-image: url("../img/hero-home.jpg");
+		}
+	}
+
+	&__line {
+		display: none;
+		position: absolute;
+		border-top: solid color(primary,base) 0.4rem;
+		width: 3rem;
+		transform: translate(-60%, 250%);
+
+		@media (min-width: $sm ){
+			display: inherit;
+		}
+
+		@media (min-width: $md ){
+			width: 5rem;
+			transform: translate(-60%, 320%);
+		}
+
+		@media (min-width: $lg ){
+			width: 5.5rem;
+		}
+	}
+
+	&__line--small {
+		position: absolute;
+		border-left: solid color(primary,base) 0.4rem;
+		height: 6rem;
+		bottom: 0;
+		left: 50%;
+		transform: translateY(-185%);
+
+		@media (min-width: $sm ){
+			display: none;
+		}
+	}
+}
+
+.hero-home__text {
+	background-color: color(secondary,base);
+	padding-right: 2rem;
+	padding-top: 5rem;
+}

@@ -1,0 +1,180 @@
+/*
+ * Grid system
+ * By http://sassflexboxgrid.com/
+ * Adapted by innovationsraum.de
+ */
+
+ * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Breakpoint generating
+$breakpoint-sm-up: "only screen and (min-width: #{$sm})";
+$breakpoint-md-up: "only screen and (min-width: #{$md})";
+$breakpoint-lg-up: "only screen and (min-width: #{$lg})";
+$breakpoint-xl-up: "only screen and (min-width: #{$xl})";
+
+$breakpoint-up-prefixes: ("xs", "sm", "md", "lg", "xl");
+
+// Grid modifier classes
+.row {
+	@include row();
+}
+
+.col {
+	@include col();
+}
+
+// Mixin to run inside of for loop - creates col/breakpoint classes * Not for developer use *
+@mixin col-factory($thisPrefix) {
+	.col-#{$thisPrefix} {
+		flex-grow: 1;
+		flex-basis: 0;
+		max-width: 100%;
+		padding-left: $gutter;
+		padding-right: $gutter;
+	}
+	@for $i from 1 through $grid-columns {
+		.col-#{$thisPrefix}-#{$i} {
+			flex-basis: 100% / $grid-columns * $i;
+			max-width: 100% / $grid-columns * $i;
+			padding-left: $gutter;
+			padding-right: $gutter;
+		}
+		.col-#{$thisPrefix}-offset-#{$i} {
+			margin-left: 100% / $grid-columns * $i;
+		}
+		.col-#{$thisPrefix}-offset-0 {
+			margin-left: 0;
+		}
+	}
+
+	.row--row-#{$thisPrefix} {
+		flex-direction: row;
+	}
+	.row--row-reverse-#{$thisPrefix} {
+		flex-direction: row-reverse;
+	}
+	.row--column-#{$thisPrefix} {
+		flex-direction: column;
+	}
+	.row--column-reverse#{$thisPrefix} {
+		flex-direction: column-reverse;
+	}
+
+	.row--wrap-#{$thisPrefix} {
+		flex-wrap: wrap;
+	}
+	.row--wrap-reverse-#{$thisPrefix} {
+		flex-wrap: wrap-reverse;
+	}
+	.row--no-wrap-#{$thisPrefix} {
+		flex-wrap: nowrap;
+	}
+
+	.row--start-#{$thisPrefix} {
+		justify-content: flex-start;
+	}
+	.row--center-#{$thisPrefix} {
+		justify-content: center;
+	}
+	.row--end-#{$thisPrefix} {
+		justify-content: flex-end;
+	}
+	.row--between-#{$thisPrefix} {
+		justify-content: space-between;
+	}
+	.row--around-#{$thisPrefix} {
+		justify-content: space-around;
+	}
+	.row--evenly-#{$thisPrefix} {
+		justify-content: space-evenly;
+	}
+
+	.row--items-top-#{$thisPrefix} {
+		align-items: flex-start;
+	}
+	.row--items-middle-#{$thisPrefix} {
+		align-items: center;
+	}
+	.row--items-bottom-#{$thisPrefix} {
+		align-items: flex-end;
+	}
+	.row--items-stretch-#{$thisPrefix} {
+		align-items: stretch;
+	}
+
+	.row--content-top-#{$thisPrefix} {
+		align-content: flex-start;
+	}
+	.row--content-middle-#{$thisPrefix} {
+		align-content: center;
+	}
+	.row--content-bottom-#{$thisPrefix} {
+		align-content: flex-end;
+	}
+	.row--content-stretch-#{$thisPrefix} {
+		align-content: stretch;
+	}
+	.row--content-between-#{$thisPrefix} {
+		align-content: space-between;
+	}
+	.row--content-around-#{$thisPrefix} {
+		align-content: space-around;
+	}
+
+	.col--first-#{$thisPrefix} {
+		order: -1;
+	}
+	.col--last-#{$thisPrefix} {
+		order: 1;
+	}
+
+	.col--align-top-#{$thisPrefix} {
+		align-self: flex-start;
+	}
+	.col--align-middle-#{$thisPrefix} {
+		align-self: center;
+	}
+	.col--align-bottom-#{$thisPrefix} {
+		align-self: flex-end;
+	}
+	.col--align-stretch-#{$thisPrefix} {
+		align-self: stretch;
+	}
+} // Mixin to run inside of for loop - creates col/breakpoint classes
+
+@for $i from 1 through length($breakpoint-up-prefixes) {
+	$thisPrefix: nth($breakpoint-up-prefixes, $i);
+	@if $thisPrefix == "xs" {
+		@include col-factory($thisPrefix);
+	} @else if $thisPrefix == "sm" {
+		@media #{$breakpoint-sm-up} {
+			@include col-factory($thisPrefix);
+		}
+	} @else if $thisPrefix == "md" {
+		@media #{$breakpoint-md-up} {
+			@include col-factory($thisPrefix);
+		}
+	} @else if $thisPrefix == "lg" {
+		@media #{$breakpoint-lg-up} {
+			@include col-factory($thisPrefix);
+		}
+	} @else if $thisPrefix == "xl" {
+		@media #{$breakpoint-xl-up} {
+			@include col-factory($thisPrefix);
+		}
+	}
+}
+
+.remove-gutter {
+	padding-left: 0;
+	padding-right: 0;
+}
+/*
+.no-gutter > [class*='col-'] {
+	padding-left: 0;
+	padding-right: 0;
+}*/

@@ -1,0 +1,54 @@
+// STRIP UNITS
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+
+// RECIEVE COLOR MAPS THE EASY WAY
+/*
+	retrieve color from $colors map ie. `color(base, primary)`
+	https://codepen.io/jakealbaugh/post/using-sass-functions-to-access-complex-variable-maps
+*/
+@function color($color-name, $color-variant:null) {
+	// color variant is optional
+	@if ($color-variant != null) {
+		// map inception
+		@return map-get(map-get($colors, $color-name), $color-variant);
+	} @else {
+		@return map-get($colors, $color-name);
+	}
+}
+
+
+// LOCAL FONT SETUP
+/*
+	This creats the source strings for fonts
+	Reference: http://goo.gl/Ru1bKP
+	And: http://www.sassmeister.com/gist/5b76b269b32cca33dbeb
+
+	Is used to creat the font-face mixin
+*/
+
+
+@function font-source-declaration($font-family,$file-path,$file-formats) {
+
+	$src: null;
+
+	$formats-map: (
+		//eot:   "#{$file-path}.eot?#iefix" format("embedded-opentype"),
+		woff2: "#{$file-path}.woff2" format("woff2"),
+		woff:  "#{$file-path}.woff" format("woff"),
+		//ttf:   "#{$file-path}.ttf" format("truetype"),
+		//svg:   "#{$file-path}.svg##{$font-family}" format("svg")
+	);
+
+	@each $key, $values in $formats-map {
+		@if contains($file-formats, $key) {
+			$file-path: nth($values, 1);
+			$font-format: nth($values, 2);
+			$src: append($src, url($file-path) $font-format, comma);
+		}
+	}
+
+	@return $src;
+}

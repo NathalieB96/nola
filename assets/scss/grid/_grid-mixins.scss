@@ -1,0 +1,75 @@
+@mixin row($full-width: "false") {
+	align-items: stretch;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	padding-left: $row-gutter-width;
+	padding-right: $row-gutter-width;
+	width: 100%;
+	// // Overrides flexbox's default behavior of making all children equal height
+	// align-items: flex-start; // If this was not in place it would require two classes to make a row full of unequal height columns aligned top, middle, bottom
+	@if type-of($row-max-width) == number and $row-max-width != 0 and $full-width == "false"{
+		max-width: calc( #{$row-max-width} + #{$gutter * 2} );
+	}
+}
+
+// Condition to run inside of the col mixin * not for developer use *
+@mixin col-condition($col-number) {
+	@if type-of($col-number) == number {
+		@if $col-number > $grid-columns or $col-number == 0 {
+			@warn "Column number must be greater than 0 and less than or equal to total number of columns in the grid (#{$grid-columns})";
+		} @else {
+			flex-basis: 100% / $grid-columns * $col-number;
+			max-width: 100% / $grid-columns * $col-number;
+			padding-left: $gutter;
+			padding-right: $gutter;
+		}
+	} @else {
+		@warn "Column number argument must be a number greater than 0 and less than or equal to total number of columns in the grid (#{$grid-columns})";
+	}
+} // Condition to run inside of the col mixin * not for developer use *
+
+@mixin col($breakpoint: "xs", $col-number: "auto") {
+	// If no breakpoint is passed and a col number is just use the first arg as the col number and act like xs
+	@if type-of($breakpoint) == number {
+		$col-number: $breakpoint;
+		@include col-condition($col-number);
+	} @else if $breakpoint == "xs" {
+		@include col-condition($col-number);
+	} @else if $breakpoint == "sm" {
+		@media #{$breakpoint-sm-up} {
+			@include col-condition($col-number);
+		}
+	} @else if $breakpoint == "md" {
+		@media #{$breakpoint-md-up} {
+			@include col-condition($col-number);
+		}
+	} @else if $breakpoint == "lg" {
+		@media #{$breakpoint-lg-up} {
+			@include col-condition($col-number);
+		}
+	} @else if $breakpoint == "xl" {
+		@media #{$breakpoint-xl-up} {
+			@include col-condition($col-number);
+		}
+	} @else {
+		@warn "col mixin requires one of the existing breakpoint prefixes (#{$breakpoint-up-prefixes})";
+	}
+}
+
+// Condition to run inside of the col-offset mixin * not for developer use *
+@mixin col-offset-condition($offset-number) {
+	@if type-of($offset-number) != number {
+		@warn "Column offset number must be a number (only arg or second arg in the col mixin)";
+	} @else if $offset-number == 0 {
+		@warn "Column offset number must be greater than 0 and less than or equal to total number of columns in the grid (#{$grid-columns})";
+	} @else if $offset-number > $grid-columns {
+		@warn "Column offset number must be greater than 0 and less than or equal to total number of columns in the grid (#{$grid-columns})";
+	} @else {
+		margin-left: 100% / $grid-columns * $offset-number;
+	}
+} // Condition to run inside of the col-offset mixin * not for developer use *

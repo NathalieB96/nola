@@ -1,0 +1,52 @@
+.bg-center {
+	background-position: center;
+	background-size: cover;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.add-margin-bottom {
+	margin-bottom: 1rem;
+}
+
+/* padding */
+
+.add-padding,
+.add-padding-top {
+	padding-top: 5rem;
+}
+
+.add-padding,
+.add-padding-bottom {
+	padding-bottom: 5rem;
+}
+
+.add-padding--medium,
+.add-padding-top--medium {
+	padding-top: 4rem;
+}
+
+.add-padding--medium,
+.add-padding-bottom--medium {
+	padding-bottom: 4rem;
+}
+
+.add-padding--small,
+.add-padding-top--small {
+	padding-top: 2rem;
+}
+
+.add-padding--small,
+.add-padding-bottom--small {
+	padding-bottom: 2rem;
+}

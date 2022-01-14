@@ -1,0 +1,55 @@
+.header {
+	position: relative;
+	width: 100%;
+	z-index: 10;
+	min-height: 3rem;
+	
+	// accessibility
+
+	.skip,
+	.skip:link {
+		@include transition(top, 0.3s);
+		background: color(primary,base);
+		color: color(secondary,base);
+		left: 0;
+		letter-spacing: 1px;
+		line-height: 1.75;
+		padding: 10px 0;
+		position: fixed;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		top: -11em;
+		width: 100%;
+		z-index: 20;
+	}
+
+	a.skip:focus,
+	a.skip:active {
+		top: 0;
+	}
+}
+
+.header-logo {
+	@extend .remove-link-style;
+	display: block;
+
+	&__image {
+		height: 4rem;
+		width: auto;
+		padding-top: 1rem;
+		position: absolute;
+
+		@media ( min-width: 850px ) {
+			height: 4.5rem;
+			
+		}
+	}
+
+}
+
+.header-hamburger {
+	font-size: 40px;
+	height: 40px;
+	width: 40px;
+}

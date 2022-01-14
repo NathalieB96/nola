@@ -1,0 +1,35 @@
+/* responsive font sizing */
+
+html {
+	@include fluid-type($font-size-min-screen-width, $font-size-max-screen-width, $font-size-min, $font-size-max);
+}
+
+/* basic styles */
+
+body * {
+	-webkit-backface-visibility: hidden;
+	&:before, &:after { -webkit-backface-visibility: hidden; }
+}
+
+body {
+	color: #2B2B2B;
+	background-color: #ffffff;
+	font-family: $font-text;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background-color: rgba( color(primary,base),0.5 );
+}
+
+.wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.clear::after {
+	content: "";
+ 	display: table;
+ 	clear: both;
+}

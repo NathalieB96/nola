@@ -1,0 +1,133 @@
+// SETTING BASIC VARS
+/*
+	Used for example in the rem-function. PLEASE read the notices in before using the rem-function!!
+*/
+$base-url: '../';
+
+
+// SET FONT VARIABLES
+/*
+	When you have declared your fonts, remember to set them as preload objects in header.php
+	Source: https://www.bramstein.com/writing/preload-hints-for-web-fonts.html
+*/
+@include font-face( Montserrat Alternates, '../fonts/montserratalternates-bold-webfont', 600 );
+@include font-face( Montserrat Alternates, '../fonts/montserratalternates-medium-webfont', 400 );
+@include font-face( Montserrat, '../fonts/montserrat-regular-webfont', 400 );
+@include font-face( Montserrat, '../fonts/montserrat-semibold-webfont', 500, );
+
+
+$font-headline: Montserrat Alternates, Helvetica, Arial, sans-serif;
+$font-text: Montserrat, Helvetica, sans-serif;
+
+/*
+	Fluid font-size setup
+	More info about this here: https://css-tricks.com/snippets/css/fluid-typography/
+*/
+$font-size-min-screen-width: 550px;
+$font-size-max-screen-width: 1400px;
+$font-size-min: 16px;
+$font-size-max: 26px;
+
+
+// SET THEME COLORS
+/*
+	http://razorltd.github.io/sasscolourfunctioncalculator/
+	for desaturate option: if the number is '50.8333' you have to move the decimal to '0.5083'
+
+	Color maps: https://codepen.io/jakealbaugh/post/using-sass-functions-to-access-complex-variable-maps
+	Usage: color(primary,base)
+*/
+$color-primary: #FF8266;
+$color-secondary: #201D40;
+$color-shade-amount: 20%;
+
+$colors: (
+	primary: (
+		base: $color-primary,
+		light: lighten($color-primary, $color-shade-amount),
+		dark: darken($color-primary, $color-shade-amount),
+	),
+	secondary: (
+		base: $color-secondary,
+		light: lighten($color-secondary, $color-shade-amount),
+		dark: darken($color-secondary, $color-shade-amount),
+	),
+	text-flow: #2B2B2B
+);
+
+
+// SET MEDIA QUERY BREAK POINTS
+$sm: 500px !default; 					// Set xs breakpoint's min width
+$md: 800px !default; 					// Set sm breakpoint's min width
+$lg: 1000px !default; 					// Set md breakpoint's min width
+$xl: 1200px !default; 					// Set lg breakpoint's min width
+
+// SET GRID VARIABLES
+$grid-columns: 12 !default; 			// Set number of columns in the grid
+$row-max-width: 1600px !default; 		// Set the max-width of row
+$row-gutter-width: 1.5rem !default;		// Set row padding
+$gutter: 0.5rem !default; 				// Set gutter size
+
+
+// GRID CLASSES
+/*
+ * Helpful guidem if you ever get lost: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+.remove-gutter					// sets padding l/r 0
+
+.row 							// default is "flex-wrap: nowrap" and "align-items: stretch"
+
+.row--row-xs					// display items as row left to right (DEFAULT)
+.row--row-reverse-xs			// display items as row right to left
+.row--column-xs					// display items as column top to bottom
+.row--column-reverse-xs			// display items as column bottom to top
+
+.row--wrap-xs					// make items wrap (DEFAULT)
+.row--wrap-reverse 				// make items wrap, but from bottom
+.row--no-wrap-xs				// make items stay in a row
+
+JUSTIFY-CONTENT
+.row--start-xs					// items are packed toward the start (DEFAULT)
+.row--center-xs					// items are centered
+.row--end-xs					// items are packed toward the end
+.row--between-xs				// items are evenly distributed
+.row--around-xs					// items are evenly distributed with equal space on both sides
+.row--evenly-xs					// items are distributed so that any spacing is euqal
+
+ALIGN ITEMS
+.row--items-top-xs				// vertical align items at their top
+.row--items-middle-xs			// vertical align items at their middle
+.row--items-bottom-xs			// vertical align items at their bottom
+.row--items-stretch-xs			// make items the same height as container (DEFAULT)
+
+ALIGN CONTENT
+.row--content-top-xs			// lines packed to the start of the container
+.row--content-middle-xs			// lines packed to the end of the container
+.row--content-bottom-xs			// lines packed to the center of the container
+.row--content-stretch-xs		// lines evenly distributed; the first line is at the start of the container while the last one is at the end (DEFAULT)
+.row--content-between-xs		// lines evenly distributed with equal space around each line
+.row--content-around-xs			// lines stretch to take up the remaining space
+
+COLUMNS
+.col-xs-1						// starts from 0
+.col-sm-1
+.col-md-1
+.col-lg-1
+.col-xl-1
+
+.col-xs-offset-1				// offsets column with specified amount
+.col-sm-offset-2
+.col-md-offset-1
+.col-lg-offset-1
+.col-xl-offset-1
+
+ORDER
+.col--first-xs					// make this item the first, regardless of html markup
+.col--last-xs					// make this item the last, regardless of html markup
+
+ALIGN SELF
+.col--align-top-xs				// overrides alignment set by the contianer for this item
+.col--align-middle-xs			// overrides alignment set by the contianer for this item
+.col--align-bottom-xs			// overrides alignment set by the contianer for this item
+.col--align-stretch-xs			// overrides alignment set by the contianer for this item
+*/

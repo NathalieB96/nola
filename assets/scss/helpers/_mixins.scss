@@ -1,0 +1,201 @@
+// LOCAL FONT SETUP
+/*
+	This creats the source strings for fonts
+	@include font-face(MavenPro, 'fonts/maven-pro/regular/maven-pro-regular-webfont', 100);
+*/
+
+@mixin font-face(
+	$font-family,
+	$file-path,
+	$weight: normal,
+	$style: normal,
+	$display: block,
+	$file-formats: woff2 woff) {
+
+	@font-face {
+		font-display: $display;
+		font-family: $font-family;
+		font-style: $style;
+		font-weight: $weight;
+
+		src: font-source-declaration(
+			$font-family,
+			$file-path,
+			$file-formats
+		);
+	}
+}
+
+
+// FLUID TYPE
+// https://css-tricks.com/snippets/css/fluid-typography/
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+	$u1: unit($min-vw);
+	$u2: unit($max-vw);
+	$u3: unit($min-font-size);
+	$u4: unit($max-font-size);
+
+	@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+		& {
+
+			font-size: $min-font-size;
+			@media screen and (min-width: $min-vw) {
+				font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+			}
+
+			@media screen and (min-width: $max-vw) {
+				font-size: $max-font-size;
+			}
+		}
+	}
+}
+
+
+// ADDS A BROWSER PREFIX TO THE PROPERTY
+/*
+	thanks to: https://github.com/matthieua/sass-css3-mixins/blob/master/css3-mixins.scss
+	@include css3-prefix(transform,all 0.3s ease-in-out 0s);
+*/
+@mixin css3-prefix($property, $value) {
+	-webkit-#{$property}: #{$value};
+//	-moz-#{$property}: #{$value};
+//	-ms-#{$property}: #{$value};
+//	-o-#{$property}: #{$value};
+	#{$property}: #{$value};
+}
+
+
+// BACKGROUND GRADIENT
+@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+//	background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+//	background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+	background-image:         linear-gradient(top, $startColor, $endColor);
+}
+
+// BACKGROUND HORIZONTAL
+@mixin background-horizontal($startColor: #3C3C3C, $endColor: #999999) {
+	background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+//	background-image:    -moz-linear-gradient(left, $startColor, $endColor);
+//	background-image:     -ms-linear-gradient(left, $startColor, $endColor);
+	background-image:         linear-gradient(left, $startColor, $endColor);
+}
+
+// BACKGROUND DOWN RIGHT
+@mixin background-downright($startColor: #3C3C3C, $endColor: #999999) {
+	background-image: -webkit-linear-gradient(-45deg, $startColor, $endColor);
+//	background-image:    -moz-linear-gradient(-45deg, $startColor, $endColor);
+//	background-image:     -ms-linear-gradient(-45deg, $startColor, $endColor);
+	background-image:         linear-gradient(135deg, $startColor, $endColor);
+}
+
+
+// TRANSITION
+/*
+	@include transition (all 2s ease-in);
+	@include transition (opacity 1s ease-in 2s, width 2s ease-out);
+*/
+@mixin transition($properties...) {
+
+	@if length($properties) >= 1 {
+		@include css3-prefix('transition', $properties);
+	}
+
+	@else {
+		@include css3-prefix('transition',  "all 0.3s ease-in-out 0s");
+	}
+}
+
+
+// TRANSFORM
+/*
+	@include transform(rotate(90deg));
+*/
+@mixin transform($params) {
+	@include css3-prefix('transform', $params);
+}
+
+
+// KEYFRAMES
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+/*	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+*/
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+
+// ANIMATION
+@mixin animation($str) {
+	@include css3-prefix('animation', $str);
+}
+
+
+// SHORTHAND MIXIN FOR OFFSET POSITIONING
+/*
+	From https://css-tricks.com/snippets/sass/mixin-offset-positioning/
+
+	@param {String} $position - Either `relative`, `absolute` or `fixed`
+	@param {Length} $top [null] - Top offset
+	@param {Length} $right [null] - Right offset
+	@param {Length} $bottom [null] - Bottom offset
+	@param {Length} $left [null] - Left offset
+
+	@include position(absolute, $top: 1em, $left: 50%);
+	OR
+	@include position(absolute, 1em, auto, auto, 50%);
+*/
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+
+// TRIANGLE
+/*
+	From https://engageinteractive.co.uk/blog/top-10-scss-mixins
+*/
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5 );
+    } @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5 );
+    } @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    } @else if  $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}

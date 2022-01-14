@@ -1,0 +1,24 @@
+.element--vl {
+	border-left: 10px solid color(primary,base);
+	height: 10rem;
+	position: absolute;
+	left: 50%;
+	margin-left: -3px;
+	bottom: -30px;
+	transform: translateY(50%);
+}
+
+.elements {
+	position: absolute;
+
+	&__circle {
+		left: -20px;
+		top: -40px;
+	}
+
+	&__waves {
+		width: 25%;
+		right: -120px;
+		bottom: 50px;
+	}
+}

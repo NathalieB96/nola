@@ -3,8 +3,9 @@
 	position: relative;
 }
 
+
+
 .header-logo {
-	position: absolute;
 	top: 10px;
 	width: 5rem;
 	height: auto;
@@ -20,19 +21,20 @@
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+	justify-content: space-between;
 	overflow-y: hidden;
 
-	@media ( min-width: 850px ) {
-		width: auto;
-	}
+	// @media ( min-width: 850px ) {
+	// 	width: auto;
+	// }
 
 
 	&__level-1 {
 		max-height: 0;
-		width: 100%;
+		width: auto;
 		padding: 0;
+		margin-top: auto;
+		margin-bottom: auto;
 
 		@media ( min-width: 850px ) {
 			max-height: 1000px;
@@ -61,8 +63,13 @@
 	@media ( min-width: 850px ) {
 		&__level-1__item {
 			display: inline-block;
-			vertical-align: top;
+			vertical-align: middle;
 		}
+	}
+
+	&__vl {
+		border-left: 2px solid #ffffff;
+  		height: 1.5rem;
 	}
 }
 

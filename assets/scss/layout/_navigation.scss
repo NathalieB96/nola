@@ -1,8 +1,20 @@
-.header-container {
-	justify-content: space-between;
+
+.header {
+	position: relative;
+}
+
+.header-logo {
+	position: absolute;
+	top: 10px;
+	width: 5rem;
+	height: auto;
 }
 
 .header-nav {
+	position: absolute;
+	color: #ffffff;
+	top: 10px;
+	right: 0;
 	width: 100%;
 	text-align: center;
 	display: flex;
@@ -33,17 +45,16 @@
 
 	&__level-1__item__link {
 		@extend .remove-link-style;
-		color: color(secondary,base);
+		color: #ffffff;
 		display: block;
 		font-size: 0.8rem;
-		text-transform: uppercase;
+		text-transform: lowercase;
 		padding: 7px;
 	}
 
 	&__level-1__item:hover .header-nav__level-1__item__link,
 	&__level-1__item:focus .header-nav__level-1__item__link,
 	&__level-1__item.is-active .header-nav__level-1__item__link {
-		font-weight: 500; ;
 		color: color(secondary,base);
 	}
 

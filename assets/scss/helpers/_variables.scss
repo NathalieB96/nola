@@ -10,10 +10,10 @@ $base-url: '../';
 	When you have declared your fonts, remember to set them as preload objects in header.php
 	Source: https://www.bramstein.com/writing/preload-hints-for-web-fonts.html
 */
-@include font-face( Montserrat Alternates, '../fonts/montserratalternates-bold-webfont', 600 );
-@include font-face( Montserrat Alternates, '../fonts/montserratalternates-medium-webfont', 400 );
-@include font-face( Montserrat, '../fonts/montserrat-regular-webfont', 400 );
-@include font-face( Montserrat, '../fonts/montserrat-semibold-webfont', 500, );
+@include font-face( Blinker, '../fonts/blinker-semibold-webfont', 500 );
+@include font-face( Lato, '../fonts/lato-light-webfont', 300 );
+@include font-face( Lato, '../fonts/lato-regular-webfont', 400 );
+@include font-face( Lato, '../fonts/lato-bold-webfont', 500, );
 
 
 $font-headline: Montserrat Alternates, Helvetica, Arial, sans-serif;
@@ -37,8 +37,9 @@ $font-size-max: 26px;
 	Color maps: https://codepen.io/jakealbaugh/post/using-sass-functions-to-access-complex-variable-maps
 	Usage: color(primary,base)
 */
-$color-primary: #FF8266;
-$color-secondary: #201D40;
+$color-primary: #00404D;
+$color-secondary: #F4AC32;
+$color-tertiary: #A9C6C3;
 $color-shade-amount: 20%;
 
 $colors: (
@@ -52,7 +53,12 @@ $colors: (
 		light: lighten($color-secondary, $color-shade-amount),
 		dark: darken($color-secondary, $color-shade-amount),
 	),
-	text-flow: #2B2B2B
+	tertiary: (
+		base: $color-tertiary,
+		light: lighten($color-secondary, $color-shade-amount),
+		dark: darken($color-secondary, $color-shade-amount),
+	),
+	text-flow: #233943
 );
 
 

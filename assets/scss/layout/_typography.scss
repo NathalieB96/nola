@@ -18,7 +18,7 @@ p + h4 {
 
 
 h1,.look-like-h1 {
-	color: color(secondary,base);
+	color: color(primary,base);
 	font-size: 2rem;
 	margin-bottom: 0.5em;
 	font-family: $font-headline;
@@ -31,7 +31,7 @@ h1,.look-like-h1 {
 
 h2,.look-like-h2 {
 	font-family: $font-headline;
-	color: #fff;
+	color: color(primary,base);
 	font-size: 2rem;
 	font-weight: 600;
 	margin-bottom: 0.25em;
@@ -41,7 +41,7 @@ h2,.look-like-h2 {
 
 h3,.look-like-h3 {
 	font-family: $font-headline;
-	color: color(secondary,base);
+	color: color(primary,base);
 	font-size: 1.25rem;
 	font-weight: bold;
 	margin-bottom: 0.85em;
@@ -163,29 +163,29 @@ ol li::before {
 	width: 1.43em;
 }
 
-ul li::before, ul li::after{
-	background-color: #2B2B2B;
-	content: '';
-	display: inline-block;
-	height: 2px;
-	margin-left: 10px;
-    margin-right: 10px;
-	position: relative;
-	top: -3px;
-	width: 0.7em;
-}
+// ul li::before {
+// 	background-color: #2B2B2B;
+// 	content: '';
+// 	display: inline-block;
+// 	height: 2px;
+// 	margin-left: 10px;
+//     margin-right: 10px;
+// 	position: relative;
+// 	top: -3px;
+// 	width: 0.7em;
+// }
 
-.list::before {
-	background-color: color(primary,base);
-	content: '';
-	display: inline-block;
-	height: 2px;
-	margin-left: 0em;
-	margin-right: 0.7em;
-	position: relative;
-	top: -3px;
-	width: 0.5em;
-}
+// .list::before {
+// 	background-color: color(primary,base);
+// 	content: '';
+// 	display: inline-block;
+// 	height: 2px;
+// 	margin-left: 0em;
+// 	margin-right: 0.7em;
+// 	position: relative;
+// 	top: -3px;
+// 	width: 0.5em;
+// }
 
 .column-text {
 	column-count: 2;

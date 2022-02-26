@@ -1,0 +1,31 @@
+/*
+ *-----------------------------------------------------------------------------------------------------------*
+ 	* Images
+ *-----------------------------------------------------------------------------------------------------------*
+ */
+
+.image {
+	height: auto;
+	margin-bottom: 1rem;
+	max-width: 100%;
+
+	&__src {
+		height: auto;
+		max-width: 100%;
+	}
+
+	&__caption {
+		font-size: 0.8rem;
+		font-style: italic;
+		padding-top: 0.5em;
+	}
+
+	@media ( min-width: 650px ) {
+		&--right {
+			float: right;
+			margin-bottom: 1rem;
+			margin-left: 3rem;
+		}
+	}
+
+}

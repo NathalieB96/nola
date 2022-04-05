@@ -1,0 +1,32 @@
+.boot h1 {
+    @media ( min-width: $md ) {
+        text-align: left;
+    }
+}
+
+
+.boot {
+
+    &__images {
+        display: none;
+
+        @media ( min-width: $md ) { 
+            display: block;
+        }
+    }
+    
+    &__images-small {
+        width: 36%;
+
+        
+    }
+
+    &__images-medium {
+        width: 60%;
+        margin-left: 2%;
+    }
+
+    &__images-wide {
+        width: 100%;
+    }
+}

@@ -1,6 +1,12 @@
 .about {
     position: relative;
     background-color: color(tertiary,lighten);
+
+    &__headline {
+        @media ( min-width: $md ) {
+            margin-bottom: 5rem;
+        }
+    } 
 }
 
 

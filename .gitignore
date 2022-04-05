@@ -1,3 +1,6 @@
 .DS_Store
 master.css.map
 master.css
+/assets/scss/master.scss
+/assets/scss/master.css.map
+/assets/.DS_Store

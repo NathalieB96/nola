@@ -1,0 +1,49 @@
+#contact {
+    background-color: #000D15;
+} 
+
+.contact {
+
+    &__image {
+        height: 300px;
+        width: 100%;
+        background-size: cover;
+        background-image: url(/assets/img/contact-wave.jpg);
+        background-repeat: no-repeat;
+    }
+}
+
+.form {
+
+    &__label {
+		display: block;
+        color: #ffffff;
+	}
+
+    &__input {
+		background: #000D15;
+        border: none;
+		border-bottom: 2px solid #fff;
+		border-radius: 0;
+		font-size: 0.8rem;
+		padding: 0.5em 1em;
+		width: 100%;
+        color: #fff;
+        margin-bottom: 1.5rem;
+	}
+
+    &__checkbox--text {
+        display: inline-block;
+    }
+
+    &__submit {
+        margin: auto;
+        display: block;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        background-color: #000D15;
+        padding: 0.5em 1em;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}

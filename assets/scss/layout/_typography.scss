@@ -24,10 +24,25 @@ h1,.look-like-h1 {
 	font-family: $font-headline;
 	letter-spacing: 0.05em;
 	text-align: center;
+	position: relative;
 
 	@media (min-width: $md ){
 		font-size: 2.5rem;
 	}
+}
+
+h1::before {
+	content: url(/assets/img/icons/wave-blue.svg);
+	width: auto;
+	height: auto;
+	position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1.look-white::before {
+	content: url(/assets/img/icons/wave-white.svg);
 }
 
 h2,.look-like-h2 {

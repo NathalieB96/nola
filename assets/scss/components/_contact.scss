@@ -5,11 +5,16 @@
 .contact {
 
     &__image {
-        height: 300px;
+        height: auto;
         width: 100%;
-        background-size: cover;
         background-image: url(/assets/img/contact-wave.jpg);
+        background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
+    }
+
+    &__headline {
+        margin-top: 18rem;
     }
 }
 
@@ -21,7 +26,7 @@
 	}
 
     &__input {
-		background: #000D15;
+		background: none;
         border: none;
 		border-bottom: 2px solid #fff;
 		border-radius: 0;

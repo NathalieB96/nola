@@ -9,6 +9,11 @@
 	top: 10px;
 	width: 5rem;
 	height: auto;
+	display: none;
+
+	@media ( min-width: 850px ) {
+		display: block;
+	}
 }
 
 .header-nav {
@@ -23,6 +28,7 @@
 	align-items: center;
 	justify-content: space-between;
 	overflow-y: hidden;
+	
 
 	// @media ( min-width: 850px ) {
 	// 	width: auto;
@@ -76,7 +82,9 @@
 //mobile nav hamburger
 
 .header-nav__level-1.is-open {
-	max-height: 1000px;
+	min-height: 100vh;
+	background-color: color(primary,base);
+	width: 100%;
 }
 
 .header-hamburger {
@@ -86,12 +94,15 @@
 	//border: 1px solid color(secondary,base);
 	position: absolute;
 	right: $row-gutter-width + $gutter;
-	transform: translateY(-50%);
-	top: 50%;
+	top: 5%;
+
+	@media ( min-width: 850px ) {
+		display: none;
+	}
 }
 
 .header-hamburger.is-active {
-	top: 15%;
+	top: 5%;
 }
 
 .header-hamburger__bar {
